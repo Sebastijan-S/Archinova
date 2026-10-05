@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArchiNova | Architecture studio</title>
+<meta name="description" content="ArchiNova is an architecture and design studio embedding creative design into every build.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#14233a; --bg:#f4f5f8; --white:#fff; --muted:#5a6578; --line:#dde1e8; --soft:#e9ecf1; --glow:#6fe0d8;
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:var(--font);background:var(--bg);color:var(--navy);line-height:1.55;font-size:18px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid #2f7fd8;outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* Header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(244,245,248,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hbar{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 32px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:28px;font-weight:400;letter-spacing:.01em}
+.logo svg{width:44px;height:44px}
+.pill{display:flex;align-items:center;gap:4px;background:#fff;border-radius:999px;padding:6px;box-shadow:0 2px 14px rgba(20,35,58,.08)}
+.pill a{text-decoration:none;font-size:18px;padding:10px 22px;border-radius:999px;transition:background .2s}
+.pill a:not(.cta):hover,.pill a.on{background:var(--soft)}
+.pill a.cta{background:var(--navy);color:#fff;margin-left:6px;transition:background .2s}
+.pill a.cta:hover{background:#22385a}
+.burger{display:none;width:48px;height:48px;border:0;border-radius:50%;background:#fff;box-shadow:0 2px 14px rgba(20,35,58,.1);cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--navy);margin:5px auto}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;padding:104px 16px 120px;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 45%,#fff 0,#f4f5f8 75%)}
+.stage{position:relative;width:min(1020px,100%);margin-top:-20px}
+.stage>svg{display:block;width:100%;height:auto}
+.copy{position:absolute;left:0;right:0;top:34%;display:flex;flex-direction:column;align-items:center;text-align:center;color:#fff;text-shadow:0 2px 20px rgba(10,22,40,.65),0 1px 3px rgba(10,22,40,.5);padding:0 4%}
+.copy::before{content:"";position:absolute;inset:-18% 4% -22%;background:radial-gradient(ellipse at center,rgba(14,26,44,.5),transparent 68%);z-index:-1}
+.glyph{width:58px;height:58px;filter:drop-shadow(0 0 14px var(--glow)) drop-shadow(0 0 30px rgba(111,224,216,.7));margin-bottom:4px}
+.sub{font-size:clamp(17px,2.1vw,26px);font-weight:300}
+h1{font-weight:400;text-transform:uppercase;font-size:clamp(28px,5vw,58px);line-height:1.1;letter-spacing:-.01em;max-width:13em;margin-top:6px}
+.cue{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-size:15px;text-decoration:none;color:var(--navy);display:flex;flex-direction:column;align-items:center;gap:4px}
+.cue svg{width:30px;height:30px}
+@media (prefers-reduced-motion:no-preference){
+  .stage>svg{animation:rise 1.4s cubic-bezier(.2,.7,.2,1) both}
+  .copy{animation:fade 1.2s .5s ease both}
+  .glyph{animation:pulse 3.2s 1.6s ease-in-out infinite}
+  .cue svg{animation:bob 2s ease-in-out infinite}
+}
+@keyframes rise{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pulse{50%{filter:drop-shadow(0 0 8px var(--glow)) drop-shadow(0 0 16px rgba(111,224,216,.5))}}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+/* Sections */
+section{padding:110px 0}
+h2{font-weight:500;font-size:clamp(30px,3.8vw,48px);line-height:1.08;letter-spacing:-.02em;max-width:15em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.two p{color:var(--muted);margin-bottom:16px;max-width:34em}
+.facts{margin-top:28px;display:grid;gap:10px;list-style:none;padding:0;color:var(--navy)}
+.facts li{padding:12px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+.facts span{color:var(--muted)}
+
+#portfolio{background:#fff}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.head p{color:var(--muted);max-width:26em}
+.work{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.work figure{display:block}
+.work .art{background:var(--soft);border-radius:18px;overflow:hidden;aspect-ratio:13/9}
+.work svg{width:100%;height:100%;display:block;transition:transform .5s}
+.work figure:hover svg{transform:scale(1.04)}
+.work figcaption{display:flex;justify-content:space-between;gap:16px;padding:14px 4px 0}
+.work b{font-weight:500;font-size:21px}
+.work span{color:var(--muted);font-size:16px}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:52px;position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:19px;border-top:1.5px dashed #b7c0cf}
+.step{position:relative;padding-top:56px}
+.step i{position:absolute;top:0;left:0;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;font-style:normal;font-weight:500;display:grid;place-items:center;font-size:16px}
+.step h3{font-size:22px;font-weight:500;margin-bottom:6px}
+.step p{color:var(--muted);font-size:16px}
+
+#expertise{background:#fff}
+.exp{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;margin-top:48px}
+.exp div{border-top:1.5px solid var(--navy);padding:22px 0 40px}
+.exp h3{font-size:22px;font-weight:500;margin-bottom:6px}
+.exp p{color:var(--muted);font-size:16px;max-width:22em}
+
+.contact{background:var(--navy);color:#e9eef6;text-align:center}
+.contact h2{margin:0 auto;color:#fff}
+.contact p{margin:18px auto 30px;max-width:28em;color:#b9c4d6}
+.btn{display:inline-block;background:#fff;color:var(--navy);text-decoration:none;font-weight:500;padding:16px 30px;border-radius:999px;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+footer{background:#0e1a2c;color:#8f9db3;font-size:15px;padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .hbar{padding:12px 16px}
+  .logo{font-size:23px}.logo svg{width:38px;height:38px}
+  .burger{display:block}
+  .pill{display:none;position:absolute;top:70px;left:12px;right:12px;flex-direction:column;align-items:stretch;border-radius:22px;padding:8px}
+  .pill.open{display:flex}
+  .pill a{text-align:center;padding:14px}
+  .pill a.cta{margin:4px 0 0}
+  .two{grid-template-columns:1fr;gap:28px}
+  .work{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:36px}.steps::before{display:none}
+  .exp{grid-template-columns:1fr 1fr}
+  section{padding:80px 0}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  .copy{top:30%}.glyph{width:44px;height:44px}
+  .steps,.exp{grid-template-columns:1fr}
+  .hero{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hbar">
+    <a class="logo" href="#home" aria-label="ArchiNova home">
+      <svg viewBox="0 0 48 48" fill="none" stroke="#14233a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 15 42M24 4l9 38M13 31h22"/><circle cx="24" cy="6" r="2.4" fill="#14233a"/><path d="M20 20h8" stroke-width="2"/></svg>
+      <span>ARCHINOVA</span>
+    </a>
+    <nav class="pill" id="nav" aria-label="Main">
+      <a href="#studio">Studio</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#process">Process</a>
+      <a href="#expertise">Expertise</a>
+      <a class="cta" href="#portfolio">Explore Projects</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home" style="padding-top:104px">
+  <div class="stage">
+    <div id="hero-art" role="img" aria-label="Isometric model of a modern building with a courtyard"></div>
+    <div class="copy">
+      <svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="#e8fffd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6 11 42M24 6l13 36M17 30h14"/><path d="M24 6V3"/><circle cx="24" cy="12" r="2.6" fill="#e8fffd"/></svg>
+      <p class="sub">Crafted for Visionaries</p>
+      <h1>Embedding creative design into every build</h1>
+    </div>
+  </div>
+  <a class="cue" href="#studio">Explore ArchiNova's design process. Scroll to continue.
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg>
+  </a>
+</section>
+
+<section id="studio">
+  <div class="wrap two">
+    <h2>We read the site before we draw the building</h2>
+    <div>
+      <p>ArchiNova is a studio of 24 architects, interior designers and engineers who work at one long table. Every project starts with light, ground and neighbours, and the form follows from there.</p>
+      <p>We stay on from the first sketch to the final snag list, so the building you approve is the one you walk into.</p>
+      <ul class="facts">
+        <li>Founded <span>2009, Lisbon and Zurich</span></li>
+        <li>Delivered <span>130+ buildings in 14 countries</span></li>
+        <li>Approach <span>Design, engineering and interiors in-house</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="head">
+      <h2>Selected projects</h2>
+      <p>Homes, workplaces and public buildings, each shaped around a single idea.</p>
+    </div>
+    <div class="work" id="work"></div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2>A process built around your decisions</h2>
+    <div class="steps">
+      <div class="step"><i>1</i><h3>Listen</h3><p>Workshops, site visits and a written brief everyone signs off.</p></div>
+      <div class="step"><i>2</i><h3>Sketch</h3><p>Three concept routes with massing models and rough costs.</p></div>
+      <div class="step"><i>3</i><h3>Resolve</h3><p>Detailed drawings, materials and engineering, coordinated in one model.</p></div>
+      <div class="step"><i>4</i><h3>Build</h3><p>We inspect on site every week and answer builders the same day.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="wrap">
+    <h2>What we design</h2>
+    <div class="exp">
+      <div><h3>Private residences</h3><p>Single homes and courtyard houses with a calm relationship to their gardens.</p></div>
+      <div><h3>Workplaces</h3><p>Offices and studios that stay flexible as teams grow and change.</p></div>
+      <div><h3>Cultural buildings</h3><p>Galleries, libraries and community halls for long public use.</p></div>
+      <div><h3>Masterplanning</h3><p>Streets, courtyards and green links for mixed-use neighbourhoods.</p></div>
+      <div><h3>Interiors</h3><p>Furniture, lighting and finishes designed with the architecture.</p></div>
+      <div><h3>Sustainability</h3><p>Energy modelling, low-carbon materials and reuse of existing structures.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Have a site in mind?</h2>
+    <p>Send us a few lines about the place and what you want to build. A partner replies within two working days.</p>
+    <a class="btn" href="mailto:studio@archinova.example">studio@archinova.example</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© <span id="yr">2026</span> ArchiNova Architects. Mockup with placeholder content.</span><span>12 Rua das Oficinas, Lisbon · +351 21 555 0142</span></div>
+</footer>
+
+<script>
+/* Tiny isometric renderer: draws boxes, flat patches and trees as SVG */
+function Iso(cx,cy,s){
+  const k=.866, p=(x,y,z)=>[cx+(x-y)*k*s, cy+(x+y)*.5*s-z*s];
+  const f=a=>a.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join(' ');
+  const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
+  const m=q=>'M'+q[0].toFixed(1)+' '+q[1].toFixed(1);
+  const l=q=>'L'+q[0].toFixed(1)+' '+q[1].toFixed(1);
+  let o='';
+  const face=(bl,br,tr,tl,fill,n,r,ln)=>{
+    o+=`<polygon points="${f([bl,br,tr,tl])}" fill="${fill}"/>`;
+    if(!ln)return; let d='';
+    for(let i=1;i<n;i++)d+=m(mix(bl,br,i/n))+l(mix(tl,tr,i/n));
+    for(let i=1;i<r;i++)d+=m(mix(bl,tl,i/r))+l(mix(br,tr,i/r));
+    o+=`<path d="${d}" stroke="${ln}" stroke-width=".8" fill="none"/>`;
+  };
+  return{
+    flat(x,y,z,w,d,c){o+=`<polygon points="${f([p(x,y,z),p(x+w,y,z),p(x+w,y+d,z),p(x,y+d,z)])}" fill="${c}"/>`},
+    box(x,y,z,w,d,h,c){
+      face(p(x,y+d,z),p(x+w,y+d,z),p(x+w,y+d,z+h),p(x,y+d,z+h),c.l,c.nl||0,c.fl||0,c.ln);
+      face(p(x+w,y+d,z),p(x+w,y,z),p(x+w,y,z+h),p(x+w,y+d,z+h),c.r,c.nr||0,c.fr||0,c.ln);
+      o+=`<polygon points="${f([p(x,y,z+h),p(x+w,y,z+h),p(x+w,y+d,z+h),p(x,y+d,z+h)])}" fill="${c.t}"/>`;
+    },
+    tree(x,y,z,r){const b=p(x,y,z),t=p(x,y,z+r*1.5);
+      o+=`<line x1="${b[0]}" y1="${b[1]}" x2="${t[0]}" y2="${t[1]}" stroke="#5b4a3a" stroke-width="${s*.14}"/><circle cx="${t[0]}" cy="${t[1]-s*r*.3}" r="${s*r}" fill="#6c8d60"/><circle cx="${t[0]-s*r*.3}" cy="${t[1]-s*r*.5}" r="${s*r*.55}" fill="#87a77a"/>`},
+    get out(){return o}
+  };
+}
+const C={
+  glass:{t:'#c9d0d6',l:'#8ea3b2',r:'#a7b9c6',ln:'rgba(235,242,246,.75)'},
+  dark:{t:'#4b515a',l:'#272b32',r:'#343a43',ln:'rgba(255,255,255,.14)'},
+  stone:{t:'#e9eae6',l:'#b9bcb5',r:'#cfd1cb',ln:'rgba(255,255,255,.5)'},
+  slab:{t:'#dcded9',l:'#7d6853',r:'#5f4d3e'}
+};
+
+/* Hero model */
+(function(){
+  const g=Iso(380,178,20);
+  g.box(0,0,-.8,20,20,.8,C.slab);
+  g.flat(.8,17.2,0,9,2.2,'#a9bd99'); g.flat(10.5,18.4,0,8.5,1.2,'#a9bd99'); g.flat(19.2,1,0,.6,16,'#a9bd99');
+  g.flat(8,8,0,11,9,'#d3d6d0');
+  g.flat(9,9,0,3.6,3.6,'#9fb58f'); g.flat(14,10.5,0,3.4,3.2,'#9fb58f'); g.flat(10,14,0,3,2.3,'#9fb58f');
+  g.box(1,1,0,7,16,5.5,{...C.glass,nl:8,fl:3,nr:12,fr:3});
+  g.box(8,1,0,11,7,7.6,{...C.dark,nl:16,nr:6,fl:0,fr:0});
+  g.box(1.6,1.6,5.5,5.8,9.6,2.6,{...C.glass,nl:7,fl:2,nr:8,fr:2});
+  g.box(1.3,1.3,8.1,6.4,10.2,.35,C.stone);
+  g.box(12,17,0,7,.9,1.7,{...C.stone,nl:3,fl:0});
+  g.tree(4.5,18.4,0,1.1); g.tree(16,13,0,1.1); g.tree(11.5,12,0,.9); g.tree(2.2,.5,0,.01);
+  const svg=`<svg viewBox="0 0 760 600" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="sh"><stop offset="0" stop-color="#14233a" stop-opacity=".28"/><stop offset="1" stop-color="#14233a" stop-opacity="0"/></radialGradient></defs><ellipse cx="380" cy="560" rx="360" ry="46" fill="url(#sh)"/>${g.out}</svg>`;
+  document.getElementById('hero-art').innerHTML=svg;
+})();
+
+/* Portfolio tiles */
+(function(){
+  const defs=[
+    {n:'Halden House',m:'Private residence · Cascais',bg:'#e3e8ee',b:g=>{g.box(0,0,-.4,12,12,.4,C.slab);g.flat(.5,.5,0,11,11,'#b4c6a4');g.box(1.5,1.5,0,6,9,3.4,{...C.dark,nl:6,nr:9});g.box(7.5,3,0,3.5,6,2.2,{...C.stone,nl:4,nr:6,fl:1,fr:1});g.tree(9.5,10.2,0,.9)}},
+    {n:'Mirel Cultural Centre',m:'Public building · Porto',bg:'#ece9e3',b:g=>{g.box(0,0,-.4,12,12,.4,C.slab);g.flat(.5,.5,0,11,11,'#d4d6cf');g.box(1,1,0,10,5,3,{...C.glass,nl:10,nr:5,fl:2,fr:2});g.box(2,6,0,6,4.5,5.2,{...C.stone,nl:5,nr:5,fl:3,fr:3});g.tree(10,9.5,0,.9)}},
+    {n:'Corten Yard',m:'Workplace · Zurich',bg:'#e7eaee',b:g=>{g.box(0,0,-.4,12,12,.4,C.slab);g.flat(.5,.5,0,11,11,'#c9cdc5');g.box(1,1,0,4,10,4.6,{...C.dark,nl:5,nr:10});g.box(7,1,0,4,10,3,{...C.glass,nl:5,nr:10,fl:2,fr:2});g.flat(5,1,0,2,10,'#a9bd99');g.tree(6,6,0,.9)}},
+    {n:'Lakeside Pavilions',m:'Hospitality · Lake Como',bg:'#e1e9ea',b:g=>{g.box(0,0,-.4,12,12,.4,C.slab);g.flat(.5,.5,0,11,11,'#a9bd99');g.box(1,1,0,4.5,4.5,2.6,{...C.stone,nl:4,nr:4,fl:1,fr:1});g.box(6.5,2,0,4.5,4.5,3.2,{...C.glass,nl:5,nr:5,fl:2,fr:2});g.box(2.5,7,0,5.5,3.6,2,{...C.dark,nl:5,nr:4});g.tree(10,9.5,0,1)}}
+  ];
+  document.getElementById('work').innerHTML=defs.map(d=>{
+    const g=Iso(130,44,11); d.b(g);
+    return `<figure><div class="art" style="background:${d.bg}"><svg viewBox="0 0 260 180" role="img" aria-label="${d.n} model">${g.out}</svg></div><figcaption><b>${d.n}</b><span>${d.m}</span></figcaption></figure>`;
+  }).join('');
+})();
+
+/* Menu */
+const burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.addEventListener('click',()=>{const o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded',false)}});
+
+/* Highlight current section */
+const links=[...nav.querySelectorAll('a:not(.cta)')];
+const io=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));
+}),{rootMargin:'-45% 0px -50% 0px'});
+links.forEach(a=>{const t=document.querySelector(a.getAttribute('href'));t&&io.observe(t)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
